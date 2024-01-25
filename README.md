@@ -1,2 +1,0 @@
-# ProjectStumble
-Stumble Clone
