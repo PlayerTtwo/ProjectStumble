@@ -26,6 +26,16 @@ public class BallPlayerInput : MonoBehaviour
         OnMoveInputCommand?.Invoke(_moveInputValue);
     }
 
+    private void OnUseItem()
+    {
+        Debug.Log("Use Item");
+    }
+
+    private void OnJump()
+    {
+        Debug.Log("Jump");
+    }
+
     private void HandleKeyboardInput()
     {
         if (_isUsingKeyboard)
