@@ -8,68 +8,65 @@ using UnityEngine.InputSystem;
 
 public class PlayerBallMovementController : MonoBehaviour
 {
-    public Camera cam;
-    private Rigidbody rb;
-    private Quaternion camRot;
-    private Vector3 moveDirection;
-    private Vector3 inputDirection;
+    public Camera camera;
+    private Rigidbody _rigidBody;
+    private Quaternion _cameraRotation;
+    private Vector3 _moveDirection;
+    private Vector3 _inputDirection;
 
-    // Start is called before the first frame update
-    void Start()
+    private BallPlayerInput _ballPlayerInput;
+
+    private void Awake()
     {
-        rb = this.GetComponent<Rigidbody>();
-        if(cam == null)
+        _ballPlayerInput = GetComponent<BallPlayerInput>();
+        _rigidBody = GetComponent<Rigidbody>();
+    }
+
+    private void Start()
+    {
+        if(camera == null) camera = Camera.main;
+    }
+
+    private void OnEnable()
+    {
+        if (_ballPlayerInput != null)
         {
-            cam = Camera.main;
+            _ballPlayerInput.OnMoveKeyboardInputCommand += BallPlayerInput_OnMoveKeyboardInputCommand;
+            _ballPlayerInput.OnMoveInputCommand += BallPlayerInput_OnMoveInputCommand;
+        }
+
+    }
+
+    private void OnDisable()
+    {
+        if (_ballPlayerInput != null)
+        {
+            _ballPlayerInput.OnMoveKeyboardInputCommand -= BallPlayerInput_OnMoveKeyboardInputCommand;
+            _ballPlayerInput.OnMoveInputCommand -= BallPlayerInput_OnMoveInputCommand;
         }
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    private void BallPlayerInput_OnMoveKeyboardInputCommand(Vector3 moveInputValue)
     {
-        inputDirection = Vector3.zero;
-#if ENABLE_INPUT_SYSTEM
-        if (Keyboard.current.qKey.isPressed || Keyboard.current.aKey.isPressed)
-        {
-            inputDirection += new Vector3(0, 0, 1);
-        }
-        if (Keyboard.current.dKey.isPressed)
-        {
-            inputDirection += new Vector3(0, 0, -1);
-        }
-        if (Keyboard.current.wKey.isPressed || Keyboard.current.zKey.isPressed)
-        {
-            inputDirection += new Vector3(1, 0, 0);
-        }
-        if (Keyboard.current.sKey.isPressed)
-        {
-            inputDirection += new Vector3(-1, 0, 0);
-        }
-#else
-        if (Input.GetKey(KeyCode.Q)|| Input.GetKey(KeyCode.A))
-        {
-            inputDirection += new Vector3(0, 0, 1);
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            inputDirection += new Vector3(0, 0, -1);
-        }
-        if (Input.GetKey(KeyCode.Z) || Input.GetKey(KeyCode.W))
-        {
-            inputDirection += new Vector3(1, 0, 0);
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            inputDirection += new Vector3(-1, 0, 0);
-        }
-#endif
+        _inputDirection = Vector3.zero;
+        _inputDirection += moveInputValue;
+    }
+
+    private void BallPlayerInput_OnMoveInputCommand(Vector2 moveInputValue)
+    {
+        _inputDirection = Vector3.zero;
+        _inputDirection += new Vector3(moveInputValue.y, 0f, -moveInputValue.x);
+    }
+
+    private void FixedUpdate()
+    {
         MoveBall();
     }
 
     private void MoveBall()
     {
-        camRot = Quaternion.AngleAxis(cam.transform.rotation.eulerAngles.y, Vector3.up);
-        moveDirection = camRot * new Vector3(Mathf.Clamp(inputDirection.x * 2, -1, 1), 0, Mathf.Clamp(inputDirection.z * 2, -1, 1));
-        rb.AddTorque(moveDirection*7.5f);
+        _cameraRotation = Quaternion.AngleAxis(camera.transform.rotation.eulerAngles.y, Vector3.up);
+        _moveDirection = _cameraRotation * new Vector3(Mathf.Clamp(_inputDirection.x * 2, -1, 1), 0, Mathf.Clamp(_inputDirection.z * 2, -1, 1));
+        _rigidBody.AddTorque(_moveDirection*7.5f);
     }
 }
