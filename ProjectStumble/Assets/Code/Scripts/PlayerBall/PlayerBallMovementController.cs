@@ -79,7 +79,7 @@ public class PlayerBallMovementController : MonoBehaviour
         OnPlayerJoin?.Invoke();
         if (LevelManager.Instance != null)
         {
-            LevelManager.Instance.OnJoinPlayer();
+            LevelManager.Instance.OnJoinPlayer(this);
             LevelManager.Instance.OnLevelStart += LevelManager_OnLevelStart;
         }
 
