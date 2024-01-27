@@ -8,6 +8,7 @@ public class BallPlayerInput : MonoBehaviour
 {
     public event Action<Vector2> OnMoveInputCommand;
     public event Action<Vector3> OnMoveKeyboardInputCommand;
+    public event Action          OnJumpCommand;
 
     private Vector2 _moveInputValue;
     private Vector3 _inputDirection;
@@ -33,7 +34,7 @@ public class BallPlayerInput : MonoBehaviour
 
     private void OnJump()
     {
-        Debug.Log("Jump");
+        OnJumpCommand?.Invoke();
     }
 
     private void HandleKeyboardInput()
