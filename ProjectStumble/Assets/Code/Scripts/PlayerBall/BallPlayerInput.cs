@@ -73,5 +73,8 @@ public class BallPlayerInput : MonoBehaviour
             OnMoveKeyboardInputCommand?.Invoke(_inputDirection);
             _isUsingKeyboard = true;
         }
+
+        if (Keyboard.current.spaceKey.wasPressedThisFrame)
+            OnJumpCommand?.Invoke();
     }
 }
