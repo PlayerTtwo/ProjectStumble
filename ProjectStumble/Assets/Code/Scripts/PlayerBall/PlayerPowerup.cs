@@ -6,15 +6,22 @@ using UnityEngine;
 
 public class PlayerPowerup : MonoBehaviour
 {
+    public event Action<PowerupData> OnGainNewPowerup;
+    public event Action OnUseCurrentPowerup;
+
     [SerializeField] private PowerupData _powerUpData;
 
     private BallPlayerInput _ballPlayerInput;
+    private PhysicMaterial _ballPhysicMaterial;
 
     private float _speedBoostTorque;
 
     public float SpeedBoostTorque { get => _speedBoostTorque; set => _speedBoostTorque = value; }
 
-    private void Awake() => _ballPlayerInput = GetComponent<BallPlayerInput>();
+    private void Awake() 
+    {
+        _ballPlayerInput = GetComponent<BallPlayerInput>();
+    }
 
     private void OnEnable() => _ballPlayerInput.OnUseItemCommand += BallPlayerInput_OnUseItemCommand;
     private void OnDisable() => _ballPlayerInput.OnUseItemCommand -= BallPlayerInput_OnUseItemCommand;
@@ -24,6 +31,7 @@ public class PlayerPowerup : MonoBehaviour
     public void OnAssignPowerup(PowerupData powerupData)
     {
         _powerUpData = powerupData;
+        OnGainNewPowerup?.Invoke(_powerUpData);
     }
 
     public void ActivatePowerup()
@@ -34,14 +42,17 @@ public class PlayerPowerup : MonoBehaviour
             break;
             case PowerupType.SpeedBoost:
                 ActivateSpeedBoost();
-            break;
+                break;
             case PowerupType.Wetter:
-            break;
+                break;
             case PowerupType.Shrink:
-            break;
+                break;
             case PowerupType.Push:
-            break;
+                break;
         }
+
+        OnUseCurrentPowerup?.Invoke();
+        _powerUpData = null;
     }
 
     private void ActivateSpeedBoost()
