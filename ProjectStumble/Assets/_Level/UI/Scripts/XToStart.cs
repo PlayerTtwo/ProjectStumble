@@ -1,0 +1,72 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
+
+public class XToStart : MonoBehaviour
+{
+    public TMP_Text readyPlayer1;
+    public TMP_Text readyPlayer2;
+    public string newText = "New Text";
+
+    public Animator _Player1Anim;
+    public Animator _Player2Anim;
+    public Animator _FadeOutTxtAnim;
+    public Image _ReadyP1Img;
+    public Image _ReadyP2Img;
+    public Sprite _Joinedimg;
+
+    public Image _ReadyP1BtnImg;
+    public Image _ReadyP2BtnImg;
+    public Sprite _JoinedBtnimg;
+
+    public GameObject P1WhiteBg;
+    public GameObject P2WhiteBg;
+
+
+
+    // Start is called before the first frame update
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            readyPlayer1.text = newText;
+            _ReadyP1Img.sprite = _Joinedimg;
+            _ReadyP1BtnImg.sprite = _JoinedBtnimg;
+            P1WhiteBg.SetActive(true);
+        }
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
+            readyPlayer2.text = newText;
+            _ReadyP2Img.sprite = _Joinedimg;
+
+            _ReadyP2BtnImg.sprite = _JoinedBtnimg;
+            P2WhiteBg.SetActive(true);
+        }
+
+        if (readyPlayer1.text == newText && readyPlayer2.text == newText)
+        {
+            _FadeOutTxtAnim.Play("FadeOutGameName");
+            StartCoroutine(Example());
+        }
+
+
+    }
+
+    IEnumerator Example()
+    {
+        yield return new WaitForSeconds(1.5f);
+        _Player1Anim.Play("CardAnimationDown");
+        _Player2Anim.Play("CardAnimationUp");
+    }
+}
+    

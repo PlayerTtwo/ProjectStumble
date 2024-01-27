@@ -5,12 +5,6 @@ using UnityEngine;
 
 public class Respawn : SceneSingleton<Respawn>
 {
-    private Vector3 offset;
-
-    private void Awake()
-    {
-        offset = new Vector3(0, 1, 0);
-    }
 
     private void OnTriggerEnter(Collider other)
     {
