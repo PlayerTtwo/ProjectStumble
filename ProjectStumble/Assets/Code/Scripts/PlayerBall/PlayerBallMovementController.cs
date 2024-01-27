@@ -19,6 +19,8 @@ public class PlayerBallMovementController : MonoBehaviour
 
     private BallPlayerInput _ballPlayerInput;
 
+    private PlayerPowerup _playerPowerup;
+
     [SerializeField] private PlayerBallState _playerBallState = PlayerBallState.Rolling;
 
     [BoxGroup("Movement"), SerializeField] private float _torque    = 7.5f;
@@ -31,6 +33,8 @@ public class PlayerBallMovementController : MonoBehaviour
 
     private bool _allowGroundCheck;
     private bool _isGrounded;
+
+    private float torqueAddition;
 
     #region Properties
 
@@ -66,6 +70,7 @@ public class PlayerBallMovementController : MonoBehaviour
     {
         _ballPlayerInput = GetComponent<BallPlayerInput>();
         _rigidBody       = GetComponent<Rigidbody>();
+        _playerPowerup = GetComponent<PlayerPowerup>();
     }
 
     private void Start()
@@ -145,7 +150,7 @@ public class PlayerBallMovementController : MonoBehaviour
                                                        Mathf.Clamp(_inputDirection.z * 2, -1, 1));
         
         if (IsGrounded)
-            _rigidBody.AddTorque(_moveDirection * Torque);
+            _rigidBody.AddTorque(_moveDirection * (Torque + _playerPowerup.SpeedBoostTorque));
         else
         {
             Vector3 midAirMoveDirection = new Vector3(-_moveDirection.z, _moveDirection.y, _moveDirection.x);

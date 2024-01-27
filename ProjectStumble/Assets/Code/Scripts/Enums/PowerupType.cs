@@ -1,7 +1,7 @@
 public enum PowerupType
 {
     SpeedBoost,
-    Enlarge,
+    Wetter,
     Push,
     Shrink,
     Stun
