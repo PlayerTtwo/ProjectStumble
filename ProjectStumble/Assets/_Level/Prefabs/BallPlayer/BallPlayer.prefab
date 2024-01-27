@@ -143,14 +143,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera: {fileID: 0}
   _playerBallState: 0
-  _torque: 18
+  _torque: 20
   _allowMovement: 0
   _jumpForce: 25
   _doubleJumpForce: 21
   _groundLayers:
     serializedVersion: 2
     m_Bits: 1
-  _groundRayLength: 0.6
+  _groundRayLength: 1
 --- !u!114 &8485397102691543108
 MonoBehaviour:
   m_ObjectHideFlags: 0
