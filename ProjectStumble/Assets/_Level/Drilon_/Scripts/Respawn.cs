@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class Respawn : SceneSingleton<Respawn>
 {
-    public Vector3 lastCheckPointPosition;
     private Vector3 offset;
 
     private void Awake()
@@ -15,7 +14,9 @@ public class Respawn : SceneSingleton<Respawn>
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent(out SphereCollider playerCollider))
-            playerCollider.transform.root.position = lastCheckPointPosition + offset;
+        if(other.transform.root.TryGetComponent(out PlayerRespawn playerRespawn))
+        {
+            playerRespawn.Respawn();
+        } 
     }
 }

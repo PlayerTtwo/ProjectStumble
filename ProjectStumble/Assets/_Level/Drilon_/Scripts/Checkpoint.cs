@@ -5,14 +5,11 @@ using UnityEngine;
 
 public class Checkpoint : MonoBehaviour
 {
-    private Vector3 lastCheckPointPosition;
-    
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.TryGetComponent(out SphereCollider playerCollider)) return;
-        lastCheckPointPosition  = playerCollider.transform.root.position;
-        Respawn.Instance.lastCheckPointPosition = lastCheckPointPosition;
+        if (other.transform.root.TryGetComponent(out PlayerRespawn playerRespawn))
+        {
+            playerRespawn.UpdateRespawnPosition();
+        }
     }
-
-   
 }
