@@ -617,7 +617,7 @@ PrefabInstance:
     - target: {fileID: 4608236516368409428, guid: 1a33682bb1542014e87546e37d9cec4c,
         type: 3}
       propertyPath: _maxPlayersToJoin
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8156151499065649054, guid: 1a33682bb1542014e87546e37d9cec4c,
         type: 3}
