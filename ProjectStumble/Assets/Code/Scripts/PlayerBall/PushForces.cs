@@ -16,6 +16,7 @@ public class PushForces : MonoBehaviour
 
     private void OnCollisionEnter(Collision other) 
     {
-        _rigidBody.AddExplosionForce(_power, transform.position, _radius, 3.0F);
+        if (other.gameObject.CompareTag("Trap"))
+            _rigidBody.AddExplosionForce(_power, transform.position, _radius, 3.0F);
     }
 }
