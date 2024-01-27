@@ -103,6 +103,8 @@ public class PlayerBallMovementController : MonoBehaviour
 
     private void Jump()
     {
+        if (!_allowMovement) return;
+
         float jumpForce = JumpForce;
         if (_playerBallState == PlayerBallState.Rolling)
             _playerBallState = PlayerBallState.Jumping;
