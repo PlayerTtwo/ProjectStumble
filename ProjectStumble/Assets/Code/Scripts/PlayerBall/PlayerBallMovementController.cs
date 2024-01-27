@@ -87,6 +87,9 @@ public class PlayerBallMovementController : MonoBehaviour
             _ballPlayerInput.OnMoveInputCommand         += BallPlayerInput_OnMoveInputCommand;
             _ballPlayerInput.OnJumpCommand              += BallPlayerInput_OnJumpCommand;
         }
+
+        if (PlayerPositionManager.Instance != null)
+            PlayerPositionManager.Instance.UpdatePlayerPosition(transform);
     }
 
     private void OnDisable()

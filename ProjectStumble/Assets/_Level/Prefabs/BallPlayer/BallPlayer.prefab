@@ -77,9 +77,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6774371012480052596}
   serializedVersion: 4
-  m_Mass: 2
-  m_Drag: 0.5
-  m_AngularDrag: 0.05
+  m_Mass: 3
+  m_Drag: 1.5
+  m_AngularDrag: 0
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -95,7 +95,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!114 &4920956116542426157
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,10 +141,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera: {fileID: 0}
   _playerBallState: 0
-  _torque: 7.5
+  _torque: 15
   _allowMovement: 0
-  _jumpForce: 12
-  _doubleJumpForce: 8
+  _jumpForce: 25
+  _doubleJumpForce: 21
   _groundLayers:
     serializedVersion: 2
     m_Bits: 1
@@ -252,7 +252,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7517133928566301050}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: a215c6f11cc33bb48ae5bbd4a6dc2cbb, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
