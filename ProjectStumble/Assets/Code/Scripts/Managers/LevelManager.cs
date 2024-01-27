@@ -10,6 +10,8 @@ public class LevelManager : SceneSingleton<LevelManager>
 
     private int _playersJoined;
 
+    public int PlayersJoined { get => _playersJoined - 1; set => _playersJoined = value; }
+
     public void OnJoinPlayer()
     {
         _playersJoined++;
@@ -19,7 +21,7 @@ public class LevelManager : SceneSingleton<LevelManager>
 
     private IEnumerator StartLevel()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(3f);
         OnLevelStart?.Invoke();
     }
 }
