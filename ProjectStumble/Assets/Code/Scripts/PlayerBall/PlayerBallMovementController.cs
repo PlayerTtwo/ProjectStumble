@@ -8,6 +8,7 @@ using UnityEngine.InputSystem;
 public class PlayerBallMovementController : MonoBehaviour
 {
     public event Action OnPlayerJump;
+    public event Action OnPlayerJoin;
 
     public  Camera     camera;
     private Rigidbody  _rigidBody;
@@ -75,6 +76,7 @@ public class PlayerBallMovementController : MonoBehaviour
 
     private void OnEnable()
     {
+        OnPlayerJoin?.Invoke();
         if (LevelManager.Instance != null)
         {
             LevelManager.Instance.OnJoinPlayer();

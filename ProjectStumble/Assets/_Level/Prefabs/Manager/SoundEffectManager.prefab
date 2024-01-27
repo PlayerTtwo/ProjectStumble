@@ -46,6 +46,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _jumpSFX: {fileID: 8300000, guid: 2f5aac1d346898941982487c0fc0efd0, type: 3}
+  _levelStartSFX: {fileID: 8300000, guid: b64140c8b35cdf7429c99b920f25725a, type: 3}
+  _playerJoinSFX:
+  - {fileID: 8300000, guid: a7ca6a8b17781014b82c0ecaf2ed7c5a, type: 3}
+  - {fileID: 8300000, guid: e3cdc74cb5c8e0244a15077fc582ddb5, type: 3}
 --- !u!82 &6424258913266073917
 AudioSource:
   m_ObjectHideFlags: 0
