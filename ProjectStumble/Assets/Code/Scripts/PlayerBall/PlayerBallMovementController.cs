@@ -34,8 +34,6 @@ public class PlayerBallMovementController : MonoBehaviour
     private bool _allowGroundCheck;
     private bool _isGrounded;
 
-    private float torqueAddition;
-
     #region Properties
 
     public float Torque          { get => _torque;          set => _torque = value; }
