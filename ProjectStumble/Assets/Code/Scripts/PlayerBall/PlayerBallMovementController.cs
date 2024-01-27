@@ -11,24 +11,50 @@ public class PlayerBallMovementController : MonoBehaviour
     private Quaternion _cameraRotation;
     private Vector3    _moveDirection;
     private Vector3    _inputDirection;
+    private Coroutine _groundCheckCoroutine;
 
     private BallPlayerInput _ballPlayerInput;
 
-    private bool _allowMovement;
-
-    private PlayerBallState _playerBallState = PlayerBallState.Rolling;
+    [SerializeField] private PlayerBallState _playerBallState = PlayerBallState.Rolling;
 
     [BoxGroup("Movement"), SerializeField] private float _torque    = 7.5f;
-    [BoxGroup("Jump"), SerializeField]     private float _jumpForce = 100f;
+    [BoxGroup("Movement"), SerializeField] private bool _allowMovement;
+    [BoxGroup("Jump"), SerializeField] private float _jumpForce = 100f;
 
-    [BoxGroup("Double Jump"), SerializeField]
-    private float _doubleJumpForce = 100f;
+    [BoxGroup("Double Jump"), SerializeField] private float _doubleJumpForce = 100f;
+    [BoxGroup("Grounded"), SerializeField] private LayerMask _groundLayers;
+    [BoxGroup("Grounded"), SerializeField] private float _groundRayLength = 2f;
+
+    private bool _allowGroundCheck;
+    private bool _isGrounded;
 
     #region Properties
 
     public float Torque          { get => _torque;          set => _torque = value; }
     public float JumpForce       { get => _jumpForce;       set => _jumpForce = value; }
     public float DoubleJumpForce { get => _doubleJumpForce; set => _doubleJumpForce = value; }
+
+    [SerializeField] public bool IsGrounded {
+        get
+        {
+            if (!_allowGroundCheck) 
+            {
+                _isGrounded = false;
+                return _isGrounded;
+            }
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, Vector3.down, out hit, _groundRayLength, _groundLayers))
+            {
+                Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down) * hit.distance, Color.red);
+                _isGrounded = true;
+                return _isGrounded;
+            }
+
+            _isGrounded = false;
+            return _isGrounded;
+        }
+        set => _isGrounded = value;
+    } 
 
     #endregion
 
@@ -41,6 +67,7 @@ public class PlayerBallMovementController : MonoBehaviour
     private void Start()
     {
         if (camera == null) camera = Camera.main;
+        IsGrounded = true;
     }
 
     private void OnEnable()
@@ -88,7 +115,17 @@ public class PlayerBallMovementController : MonoBehaviour
 
     private void BallPlayerInput_OnJumpCommand() => Jump();
 
-    private void FixedUpdate() => MoveBall();
+    private void FixedUpdate() 
+    {
+        if (IsGrounded && _playerBallState != PlayerBallState.Rolling)
+        {
+            if (_groundCheckCoroutine != null) StopCoroutine(_groundCheckCoroutine);
+            _allowGroundCheck = true;
+            _playerBallState = PlayerBallState.Rolling;
+        }
+
+        MoveBall();
+    } 
 
     private void MoveBall()
     {
@@ -98,17 +135,27 @@ public class PlayerBallMovementController : MonoBehaviour
         _moveDirection = _cameraRotation * new Vector3(Mathf.Clamp(_inputDirection.x * 2, -1, 1),
                                                        0,
                                                        Mathf.Clamp(_inputDirection.z * 2, -1, 1));
-        _rigidBody.AddTorque(_moveDirection * Torque);
+        
+        if (IsGrounded)
+            _rigidBody.AddTorque(_moveDirection * Torque);
+        else
+        {
+            Vector3 midAirMoveDirection = new Vector3(-_moveDirection.z, _moveDirection.y, _moveDirection.x);
+            _rigidBody.AddForce(midAirMoveDirection / 8f, ForceMode.VelocityChange);
+        }
     }
 
     private void Jump()
     {
         if (!_allowMovement) return;
+        if (_playerBallState == PlayerBallState.DoubleJumping) return;
 
         float jumpForce = JumpForce;
         if (_playerBallState == PlayerBallState.Rolling)
+        {
             _playerBallState = PlayerBallState.Jumping;
-        if (_playerBallState == PlayerBallState.Jumping)
+        }
+        else if (_playerBallState == PlayerBallState.Jumping)
         {
             _playerBallState = PlayerBallState.DoubleJumping;
             jumpForce        = _doubleJumpForce;
@@ -116,5 +163,14 @@ public class PlayerBallMovementController : MonoBehaviour
 
         Vector3 jumpDirection = new Vector3(0f, jumpForce, 0f);
         _rigidBody.AddForce(jumpDirection, ForceMode.Impulse);
+        _allowGroundCheck = false;
+        if (_groundCheckCoroutine != null) StopCoroutine(_groundCheckCoroutine);
+        _groundCheckCoroutine = StartCoroutine(EnableGroundCheck());
+    }
+
+    private IEnumerator EnableGroundCheck()
+    {
+        yield return new WaitForSeconds(.5f);
+        _allowGroundCheck = true;
     }
 }
