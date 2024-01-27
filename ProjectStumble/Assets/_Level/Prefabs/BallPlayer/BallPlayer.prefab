@@ -69,7 +69,6 @@ Transform:
   m_Children:
   - {fileID: 8059183050836701503}
   - {fileID: 5564794832481117528}
-  - {fileID: 3888724884757852081}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &3312323298691206330
@@ -293,91 +292,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1001 &3278587715195701113
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1767773380029032648}
-    m_Modifications:
-    - target: {fileID: 1767773380029032648, guid: 0c12eb6d012810c4da0b4a3b850dbc33,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1767773380029032648, guid: 0c12eb6d012810c4da0b4a3b850dbc33,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.395
-      objectReference: {fileID: 0}
-    - target: {fileID: 1767773380029032648, guid: 0c12eb6d012810c4da0b4a3b850dbc33,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1767773380029032648, guid: 0c12eb6d012810c4da0b4a3b850dbc33,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1767773380029032648, guid: 0c12eb6d012810c4da0b4a3b850dbc33,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1767773380029032648, guid: 0c12eb6d012810c4da0b4a3b850dbc33,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1767773380029032648, guid: 0c12eb6d012810c4da0b4a3b850dbc33,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1767773380029032648, guid: 0c12eb6d012810c4da0b4a3b850dbc33,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1767773380029032648, guid: 0c12eb6d012810c4da0b4a3b850dbc33,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1767773380029032648, guid: 0c12eb6d012810c4da0b4a3b850dbc33,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5294392136568062153, guid: 0c12eb6d012810c4da0b4a3b850dbc33,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.157
-      objectReference: {fileID: 0}
-    - target: {fileID: 5294392136568062153, guid: 0c12eb6d012810c4da0b4a3b850dbc33,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.432
-      objectReference: {fileID: 0}
-    - target: {fileID: 6774371012480052596, guid: 0c12eb6d012810c4da0b4a3b850dbc33,
-        type: 3}
-      propertyPath: m_Name
-      value: RukoInSpaceBall
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 4770056600032549491, guid: 0c12eb6d012810c4da0b4a3b850dbc33, type: 3}
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 0c12eb6d012810c4da0b4a3b850dbc33, type: 3}
---- !u!4 &3888724884757852081 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1767773380029032648, guid: 0c12eb6d012810c4da0b4a3b850dbc33,
-    type: 3}
-  m_PrefabInstance: {fileID: 3278587715195701113}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4631217828986484104
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -454,7 +368,7 @@ PrefabInstance:
     - target: {fileID: 6133039701525505406, guid: dab210605edcb9342bda0c1ea8507fce,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.942003
+      value: 5.547003
       objectReference: {fileID: 0}
     - target: {fileID: 6133039701525505406, guid: dab210605edcb9342bda0c1ea8507fce,
         type: 3}
