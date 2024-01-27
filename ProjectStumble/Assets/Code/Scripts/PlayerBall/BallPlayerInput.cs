@@ -9,6 +9,7 @@ public class BallPlayerInput : MonoBehaviour
     public event Action<Vector2> OnMoveInputCommand;
     public event Action<Vector3> OnMoveKeyboardInputCommand;
     public event Action          OnJumpCommand;
+    public event Action OnUseItemCommand;
 
     private Vector2 _moveInputValue;
     private Vector3 _inputDirection;
@@ -29,7 +30,7 @@ public class BallPlayerInput : MonoBehaviour
 
     private void OnUseItem()
     {
-        Debug.Log("Use Item");
+        OnUseItemCommand?.Invoke();
     }
 
     private void OnJump()
@@ -73,5 +74,8 @@ public class BallPlayerInput : MonoBehaviour
             OnMoveKeyboardInputCommand?.Invoke(_inputDirection);
             _isUsingKeyboard = true;
         }
+
+        if (Keyboard.current.spaceKey.wasPressedThisFrame)
+            OnJumpCommand?.Invoke();
     }
 }

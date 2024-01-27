@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelManager : SceneSingleton<LevelManager>
@@ -9,9 +11,31 @@ public class LevelManager : SceneSingleton<LevelManager>
 
     private int _playersJoined;
 
-    public void OnJoinPlayer()
+    private List<PlayerBallMovementController> _players = new List<PlayerBallMovementController>();
+
+    public int PlayersJoined { get => _playersJoined - 1; set => _playersJoined = value; }
+
+    public void OnJoinPlayer(PlayerBallMovementController player)
     {
         _playersJoined++;
-        if (_playersJoined == _maxPlayersToJoin) OnLevelStart?.Invoke();
+        _players.Add(player);
+        if (_playersJoined == _maxPlayersToJoin)
+            StartCoroutine(StartLevel());
+    }
+
+    private IEnumerator StartLevel()
+    {
+        yield return new WaitForSeconds(3f);
+        OnLevelStart?.Invoke();
+    }
+
+        public PlayerBallMovementController GetOpponent(PlayerBallMovementController player)
+    {
+        for(int i = 0; i < _players.Count; i++)
+        {
+            if (player != _players[i])
+             return _players[i];
+        }
+        return null;
     }
 }
