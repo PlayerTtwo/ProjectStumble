@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 4920956116542426157}
   - component: {fileID: 1245329125684877874}
   - component: {fileID: 8485397102691543108}
+  - component: {fileID: 2016645375546582103}
   m_Layer: 0
   m_Name: BallPlayer
   m_TagString: Untagged
@@ -139,9 +140,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 0}
+  _playerBallState: 0
   _torque: 7.5
+  _allowMovement: 0
   _jumpForce: 12
   _doubleJumpForce: 8
+  _groundLayers:
+    serializedVersion: 2
+    m_Bits: 1
+  _groundRayLength: 0.6
 --- !u!114 &8485397102691543108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,6 +159,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe79b4c2ec86fef41b4e930a62bed43b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2016645375546582103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6774371012480052596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5545424d911a3f4f8869f8c8dd5071f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7517133928566301050
