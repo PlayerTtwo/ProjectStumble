@@ -147,14 +147,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera: {fileID: 0}
   _playerBallState: 0
-  _torque: 18
+  _torque: 20
   _allowMovement: 0
   _jumpForce: 25
   _doubleJumpForce: 21
   _groundLayers:
     serializedVersion: 2
     m_Bits: 1
-  _groundRayLength: 0.6
+  _groundRayLength: 1
 --- !u!114 &8485397102691543108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -389,6 +389,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PlayerCamera
+      objectReference: {fileID: 0}
+    - target: {fileID: 6133039701525505406, guid: dab210605edcb9342bda0c1ea8507fce,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6133039701525505406, guid: dab210605edcb9342bda0c1ea8507fce,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.547003
+      objectReference: {fileID: 0}
+    - target: {fileID: 6133039701525505406, guid: dab210605edcb9342bda0c1ea8507fce,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 8.320503
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
