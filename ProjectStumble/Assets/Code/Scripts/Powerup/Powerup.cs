@@ -7,26 +7,22 @@ public class Powerup : MonoBehaviour
 {
     [SerializeField] private Transform _collectVfx;
 
-    private void Awake()
-    {
-        AssignRandomPowerupType();
-    }
+    [SerializeField] private List<PowerupData> _powerUpList = new List<PowerupData>();
 
-    private void AssignRandomPowerupType()
+    public void Collect(PlayerBallMovementController player)
     {
-
-    }
-
-    public void Collect()
-    {
-        Debug.Log("Collected powerup");
+        int randomPowerupIndex = Random.Range(0, _powerUpList.Count);
+        PowerupData powerupData = _powerUpList[randomPowerupIndex];
+        player.GetComponent<PlayerPowerup>().OnAssignPowerup(powerupData);
     }
 
     private void OnTriggerEnter(Collider other) 
     {
-        if (other.GetComponentInParent<PlayerBallMovementController>() != null)
+        PlayerBallMovementController player = other.GetComponentInParent<PlayerBallMovementController>();
+        if (player != null)
         {
             LeanPool.Spawn(_collectVfx, transform.position, _collectVfx.rotation);
+            Collect(player);
             gameObject.SetActive(false);
         }
     }

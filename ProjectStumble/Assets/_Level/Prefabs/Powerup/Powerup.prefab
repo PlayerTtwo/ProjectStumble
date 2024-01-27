@@ -9784,6 +9784,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _collectVfx: {fileID: 462660, guid: ec7286429da0ad74dbfaf9940406e5e1, type: 3}
+  _powerUpList:
+  - {fileID: 11400000, guid: b914b9d90ef0cef4fab3f9539fac97da, type: 2}
+  - {fileID: 11400000, guid: 8814adcc737567843b4b04d7fae5b30e, type: 2}
+  - {fileID: 11400000, guid: 35b26d1082d2ad54cb953cfb1d7ce09b, type: 2}
+  - {fileID: 11400000, guid: 02b6f2766061c4743a1c1e06f8d3561c, type: 2}
+  - {fileID: 11400000, guid: 2266cbae695a7714ca64dc84efc934b3, type: 2}
+  - {fileID: 11400000, guid: 02b6f2766061c4743a1c1e06f8d3561c, type: 2}
+  - {fileID: 11400000, guid: 02b6f2766061c4743a1c1e06f8d3561c, type: 2}
+  - {fileID: 11400000, guid: 02b6f2766061c4743a1c1e06f8d3561c, type: 2}
+  - {fileID: 11400000, guid: 02b6f2766061c4743a1c1e06f8d3561c, type: 2}
+  - {fileID: 11400000, guid: 02b6f2766061c4743a1c1e06f8d3561c, type: 2}
 --- !u!1 &1629950777679180
 GameObject:
   m_ObjectHideFlags: 0
