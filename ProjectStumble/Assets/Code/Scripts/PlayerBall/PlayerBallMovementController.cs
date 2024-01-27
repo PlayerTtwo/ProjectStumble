@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using NaughtyAttributes;
 using UnityEngine;
@@ -6,6 +7,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerBallMovementController : MonoBehaviour
 {
+    public event Action OnPlayerJump;
+
     public  Camera     camera;
     private Rigidbody  _rigidBody;
     private Quaternion _cameraRotation;
@@ -149,6 +152,8 @@ public class PlayerBallMovementController : MonoBehaviour
     {
         if (!_allowMovement) return;
         if (_playerBallState == PlayerBallState.DoubleJumping) return;
+
+        OnPlayerJump?.Invoke();
 
         float jumpForce = JumpForce;
         if (_playerBallState == PlayerBallState.Rolling)
