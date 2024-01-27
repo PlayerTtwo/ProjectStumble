@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 8587223107682286893}
   - component: {fileID: 2935413171418295596}
   m_Layer: 8
-  m_Name: DragonBall
+  m_Name: DragonBallBlueEdition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -250,11 +250,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: DragonBall
       objectReference: {fileID: 0}
+    - target: {fileID: 4245125855718461755, guid: 698e6ea03fc88344e998586688dac4d8,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e4647494055d6a74db3f599f2055b895, type: 2}
     - target: {fileID: 7575586566841174750, guid: 698e6ea03fc88344e998586688dac4d8,
         type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8221334756544469424, guid: 698e6ea03fc88344e998586688dac4d8,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7c2dd700f52e68c4daa6fd8fad276091, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
