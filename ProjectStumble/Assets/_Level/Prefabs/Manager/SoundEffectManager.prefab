@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8202647093101771659}
   - component: {fileID: 9073926712859697382}
   - component: {fileID: 6424258913266073917}
+  - component: {fileID: 6027732248335957257}
   m_Layer: 0
   m_Name: SoundEffectManager
   m_TagString: Untagged
@@ -46,10 +47,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _jumpSFX: {fileID: 8300000, guid: 2f5aac1d346898941982487c0fc0efd0, type: 3}
+  _collideWithOppSFX: {fileID: 8300000, guid: 13d0439537ef0aa418b224c89fa12e65, type: 3}
   _levelStartSFX: {fileID: 8300000, guid: b64140c8b35cdf7429c99b920f25725a, type: 3}
+  _levelFinishSFX: {fileID: 8300000, guid: 782143862f27df242b862e3ab17baa40, type: 3}
   _playerJoinSFX:
-  - {fileID: 8300000, guid: a7ca6a8b17781014b82c0ecaf2ed7c5a, type: 3}
-  - {fileID: 8300000, guid: e3cdc74cb5c8e0244a15077fc582ddb5, type: 3}
+  - {fileID: 8300000, guid: 628c09cb45384f342bda97e62f6fa22a, type: 3}
+  - {fileID: 8300000, guid: c39f494d4b2794b47ae7c76a214cd35a, type: 3}
+  _speedBoostSFX: {fileID: 8300000, guid: 42b9aabebcce3cc4ab56253336ef94db, type: 3}
+  _wetterSFX: {fileID: 8300000, guid: 558acc9e0bcdf5d41a5ef290ab425450, type: 3}
+  _invertControlsSFX: {fileID: 8300000, guid: 9c0432abaf7552a4a9a517047a8a3013, type: 3}
+  _shrinkSFX: {fileID: 8300000, guid: 87032791106746e45ae3143819694407, type: 3}
+  _stunSFX: {fileID: 8300000, guid: a194b6ac1c1b1f0469ea7f22932268ca, type: 3}
+  _gainPoweupSFX: {fileID: 8300000, guid: 1e12a27d96b56b046970370c0907bf97, type: 3}
 --- !u!82 &6424258913266073917
 AudioSource:
   m_ObjectHideFlags: 0
@@ -146,3 +155,11 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!81 &6027732248335957257
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2819264753042293962}
+  m_Enabled: 1

@@ -11,6 +11,7 @@ public class SoundEffectManager : SceneSingleton<SoundEffectManager>
     [BoxGroup("Player"), SerializeField] private AudioClip _collideWithOppSFX;
 
     [BoxGroup("Level"), SerializeField] private AudioClip _levelStartSFX;
+    [BoxGroup("Level"), SerializeField] private AudioClip _levelFinishSFX;
     [BoxGroup("Level"), SerializeField] private AudioClip[] _playerJoinSFX;
 
     [BoxGroup("Player Abilities"), SerializeField] private AudioClip _speedBoostSFX;
@@ -23,8 +24,8 @@ public class SoundEffectManager : SceneSingleton<SoundEffectManager>
 
     public AudioClip JumpSFX => _jumpSFX;
     public AudioClip LevelStartSFX => _levelStartSFX;
+    public AudioClip LevelFinishSFX { get => _levelFinishSFX; set => _levelFinishSFX = value; }
     public AudioClip[] PlayerJoinSFX => _playerJoinSFX;
-
     public AudioClip SpeedBoostSFX { get => _speedBoostSFX; set => _speedBoostSFX = value; }
     public AudioClip WetterSFX { get => _wetterSFX; set => _wetterSFX = value; }
     public AudioClip InvertControlsSFX { get => _invertControlsSFX; set => _invertControlsSFX = value; }
