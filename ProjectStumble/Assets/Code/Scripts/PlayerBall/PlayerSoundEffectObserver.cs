@@ -40,16 +40,19 @@ public class PlayerSoundEffectObserver : MonoBehaviour
 
     private void Player_OnPlayerJump()
     {
+        if(SoundEffectManager.Instance == null) return;
         PlaySoundEffect(SoundEffectManager.Instance.JumpSFX);
     }
 
     private void Player_OnPlayerJoin()
     {
+        if(SoundEffectManager.Instance == null) return;
         PlaySoundEffect(SoundEffectManager.Instance.PlayerJoinSFX[LevelManager.Instance.PlayersJoined]);
     }
 
     private void LevelManager_OnLevelStart()
 {
+        if(SoundEffectManager.Instance == null) return;
         PlaySoundEffect(SoundEffectManager.Instance.LevelStartSFX);
     }
 

@@ -6,6 +6,7 @@ using UnityEngine;
 public class LevelManager : SceneSingleton<LevelManager>
 {
     public event Action OnLevelStart;
+    public event Action<int> OnPlayerJoined;
 
     [SerializeField] private int _maxPlayersToJoin = 2;
 
@@ -18,6 +19,7 @@ public class LevelManager : SceneSingleton<LevelManager>
     public void OnJoinPlayer(PlayerBallMovementController player)
     {
         _playersJoined++;
+        OnPlayerJoined?.Invoke(_playersJoined);
         _players.Add(player);
         if (_playersJoined == _maxPlayersToJoin)
             StartCoroutine(StartLevel());
@@ -25,7 +27,7 @@ public class LevelManager : SceneSingleton<LevelManager>
 
     private IEnumerator StartLevel()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(.5f);
         OnLevelStart?.Invoke();
     }
 
@@ -37,5 +39,12 @@ public class LevelManager : SceneSingleton<LevelManager>
              return _players[i];
         }
         return null;
+    }
+
+    public void FinishLevel(PlayerBallMovementController player)
+    {
+        PlayerBallMovementController opponent = GetOpponent(player);
+        player.GetComponentInChildren<UILevelFinish>().DisplayGameWin();
+        opponent.GetComponentInChildren<UILevelFinish>().DisplayGameLose();
     }
 }
