@@ -10,6 +10,12 @@ public class PlayerPowerup : MonoBehaviour
     public event Action<PowerupData> OnGainNewPowerup;
     public event Action OnUseCurrentPowerup;
 
+    public event Action OnPowerupStun;
+    public event Action OnPowerupSpeedBoost;
+    public event Action OnPowerupWetter;
+    public event Action OnPowerupShrink;
+    public event Action OnPowerupPush;
+
     [SerializeField] private PowerupData _powerUpData;
     private float _ySpawnOffset = 1.8f;
 
@@ -20,9 +26,9 @@ public class PlayerPowerup : MonoBehaviour
     private bool _isStuned = false;
 
     public float SpeedBoostTorque => _speedBoostTorque;
-    public bool IsStuned => _isStuned; 
+    public bool IsStuned => _isStuned;
 
-    private void Awake() 
+    private void Awake()
     {
         _playerBallMovementController = GetComponent<PlayerBallMovementController>();
         _ballPlayerInput = GetComponent<BallPlayerInput>();
@@ -41,11 +47,11 @@ public class PlayerPowerup : MonoBehaviour
 
     public void ActivatePowerup()
     {
-        switch(_powerUpData.PowerupType)
+        switch (_powerUpData.PowerupType)
         {
             case PowerupType.Stun:
                 ActivateStun();
-            break;
+                break;
             case PowerupType.SpeedBoost:
                 ActivateSpeedBoost();
                 break;
@@ -74,18 +80,21 @@ public class PlayerPowerup : MonoBehaviour
 
     private void ActivateStun()
     {
+        OnPowerupStun?.Invoke();
         //Get Component
         PlayerBallMovementController opponent = LevelManager.Instance.GetOpponent(_playerBallMovementController);
         //Set Values
         opponent.IsStuned = true;
         //Delayed Set Value
-        DOVirtual.Float(0f, 1f, 2f, x => { }).OnComplete(()=> {
-            opponent.IsStuned = false;   
+        DOVirtual.Float(0f, 1f, 2f, x => { }).OnComplete(() =>
+        {
+            opponent.IsStuned = false;
         });
     }
 
     private void ActivateSpeedBoost()
     {
+        OnPowerupSpeedBoost?.Invoke();
         //Set Values
         _speedBoostTorque = 10f;
         //Delayed Set Value
@@ -94,17 +103,19 @@ public class PlayerPowerup : MonoBehaviour
 
     private void ActivateWetter()
     {
+        OnPowerupWetter?.Invoke();
         //Get Components
         PlayerBallMovementController opponent = LevelManager.Instance.GetOpponent(_playerBallMovementController);
         SphereCollider _ballSphereCollider = opponent.GetComponentInChildren<SphereCollider>();
         //Set Values
         _ballSphereCollider.material.dynamicFriction = 0f;
         //Delayed Set Value
-        DOTween.To(() => _ballSphereCollider.material.dynamicFriction, x => _ballSphereCollider.material.dynamicFriction = x, 7f, 0f).SetDelay(5f);
+        DOTween.To(() => _ballSphereCollider.material.dynamicFriction, x => _ballSphereCollider.material.dynamicFriction = x, 7f, 0f).SetDelay(4f);
     }
 
     private void ActivateShrink()
     {
+        OnPowerupShrink?.Invoke();
         //Get Components
         PlayerBallMovementController opponent = LevelManager.Instance.GetOpponent(_playerBallMovementController);
         //Set Values
@@ -117,12 +128,14 @@ public class PlayerPowerup : MonoBehaviour
 
     private void ActivatePush()
     {
+        OnPowerupPush?.Invoke();
         //Get Component
         PlayerBallMovementController opponent = LevelManager.Instance.GetOpponent(_playerBallMovementController);
         //Set Values
         opponent.InvertControls = true;
         //Delayed Set Value
-        DOVirtual.Float(0f, 1f, 4f, x => { }).OnComplete(() => {
+        DOVirtual.Float(0f, 1f, 4f, x => { }).OnComplete(() =>
+        {
             opponent.InvertControls = false;
         });
     }
