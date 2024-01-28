@@ -116,7 +116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _canvasGroup: {fileID: 4284731202541704596}
-  _powerupIconImage: {fileID: 0}
+  _powerupIconImage: {fileID: 2889537839100199140}
 --- !u!1 &6901355711298572914
 GameObject:
   m_ObjectHideFlags: 0
