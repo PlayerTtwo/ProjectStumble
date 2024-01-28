@@ -15,6 +15,7 @@ public class PlayerPowerup : MonoBehaviour
 
     private PlayerBallMovementController _playerBallMovementController;
     private BallPlayerInput _ballPlayerInput;
+    private PlayerParticle _playerParticle;
 
     private float _speedBoostTorque;
     private bool _isStuned = false;
@@ -26,6 +27,7 @@ public class PlayerPowerup : MonoBehaviour
     {
         _playerBallMovementController = GetComponent<PlayerBallMovementController>();
         _ballPlayerInput = GetComponent<BallPlayerInput>();
+        _playerParticle = GetComponent<PlayerParticle>();
     }
 
     private void OnEnable() => _ballPlayerInput.OnUseItemCommand += BallPlayerInput_OnUseItemCommand;
@@ -41,6 +43,7 @@ public class PlayerPowerup : MonoBehaviour
 
     public void ActivatePowerup()
     {
+        if (_powerUpData == null) return;
         switch(_powerUpData.PowerupType)
         {
             case PowerupType.Stun:
@@ -82,6 +85,7 @@ public class PlayerPowerup : MonoBehaviour
         DOVirtual.Float(0f, 1f, 2f, x => { }).OnComplete(()=> {
             opponent.IsStuned = false;   
         });
+        opponent.GetComponent<PlayerParticle>().ActivateSleep(2f);
     }
 
     private void ActivateSpeedBoost()
@@ -90,6 +94,7 @@ public class PlayerPowerup : MonoBehaviour
         _speedBoostTorque = 10f;
         //Delayed Set Value
         DOTween.To(() => _speedBoostTorque, x => _speedBoostTorque = x, 0f, 0f).SetDelay(3f);
+        _playerParticle.ActivateSpeedBoost(3f);
     }
 
     private void ActivateWetter()
@@ -101,6 +106,7 @@ public class PlayerPowerup : MonoBehaviour
         _ballSphereCollider.material.dynamicFriction = 0f;
         //Delayed Set Value
         DOTween.To(() => _ballSphereCollider.material.dynamicFriction, x => _ballSphereCollider.material.dynamicFriction = x, 7f, 0f).SetDelay(5f);
+        opponent.GetComponent<PlayerParticle>().ActivateSpeedBoost(5f);
     }
 
     private void ActivateShrink()
@@ -113,6 +119,7 @@ public class PlayerPowerup : MonoBehaviour
         //Delayed Set Value
         DOTween.To(() => opponent.GetComponent<Rigidbody>().mass, x => opponent.GetComponent<Rigidbody>().mass = x, 3f, 0f).SetDelay(5f);
         opponent.transform.DOScale(Vector3.one * 1f, 0f).SetDelay(5f);
+        opponent.GetComponent<PlayerParticle>().ActivateShrink(5f);
     }
 
     private void ActivatePush()
@@ -122,8 +129,9 @@ public class PlayerPowerup : MonoBehaviour
         //Set Values
         opponent.InvertControls = true;
         //Delayed Set Value
-        DOVirtual.Float(0f, 1f, 4f, x => { }).OnComplete(() => {
+        DOVirtual.Float(0f, 1f, 3f, x => { }).OnComplete(() => {
             opponent.InvertControls = false;
         });
+        opponent.GetComponent<PlayerParticle>().ActivateInverseControls(3f);
     }
 }
