@@ -33,6 +33,8 @@ public class PlayerBallMovementController : MonoBehaviour
 
     private bool _allowGroundCheck;
     private bool _isGrounded;
+    private bool _isStuned;
+    private bool _invertControls;
 
     #region Properties
 
@@ -60,7 +62,10 @@ public class PlayerBallMovementController : MonoBehaviour
             return _isGrounded;
         }
         set => _isGrounded = value;
-    } 
+    }
+
+    public bool IsStuned { get => _isStuned; set => _isStuned = value; }
+    public bool InvertControls { get => _invertControls; set => _invertControls = value; }
 
     #endregion
 
@@ -135,7 +140,7 @@ public class PlayerBallMovementController : MonoBehaviour
             _playerBallState = PlayerBallState.Rolling;
         }
 
-        MoveBall();
+        if (!IsStuned) MoveBall();
     } 
 
     private void MoveBall()
@@ -146,7 +151,10 @@ public class PlayerBallMovementController : MonoBehaviour
         _moveDirection = _cameraRotation * new Vector3(Mathf.Clamp(_inputDirection.x * 2, -1, 1),
                                                        0,
                                                        Mathf.Clamp(_inputDirection.z * 2, -1, 1));
-        
+
+        if (InvertControls)
+            _moveDirection *= -1;
+
         if (IsGrounded)
             _rigidBody.AddTorque(_moveDirection * (Torque + _playerPowerup.SpeedBoostTorque));
         else
