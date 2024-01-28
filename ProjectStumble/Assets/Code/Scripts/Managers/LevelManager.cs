@@ -7,6 +7,7 @@ public class LevelManager : SceneSingleton<LevelManager>
 {
     public event Action OnLevelStart;
     public event Action<int> OnPlayerJoined;
+    public event Action OnLevelFinish;
 
     [SerializeField] private int _maxPlayersToJoin = 2;
 
@@ -49,6 +50,7 @@ public class LevelManager : SceneSingleton<LevelManager>
 
     public void FinishLevel(PlayerBallMovementController player)
     {
+        OnLevelFinish?.Invoke();
         PlayerBallMovementController opponent = GetOpponent(player);
         player.GetComponentInChildren<UILevelFinish>().DisplayGameWin();
         opponent.GetComponentInChildren<UILevelFinish>().DisplayGameLose();
