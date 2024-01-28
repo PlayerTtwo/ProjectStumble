@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cfe9ff3f75dbb448af70d5e18fb6dac, type: 3}
   m_Name: ShrinkData
   m_EditorClassIdentifier: 
+  _iconSprite: {fileID: 21300000, guid: 239ce906161c77d42b5cba7d4fe35334, type: 3}
   _powerUpType: 3

@@ -34,8 +34,6 @@ public class PlayerBallMovementController : MonoBehaviour
     private bool _allowGroundCheck;
     private bool _isGrounded;
 
-    private float torqueAddition;
-
     #region Properties
 
     public float Torque          { get => _torque;          set => _torque = value; }
@@ -154,7 +152,7 @@ public class PlayerBallMovementController : MonoBehaviour
         else
         {
             Vector3 midAirMoveDirection = new Vector3(-_moveDirection.z, _moveDirection.y, _moveDirection.x);
-            _rigidBody.AddForce(midAirMoveDirection / 8f, ForceMode.VelocityChange);
+            _rigidBody.AddForce(midAirMoveDirection / 7f, ForceMode.VelocityChange);
         }
     }
 
