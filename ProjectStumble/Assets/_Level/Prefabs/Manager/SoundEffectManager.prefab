@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8202647093101771659}
   - component: {fileID: 9073926712859697382}
   - component: {fileID: 6424258913266073917}
+  - component: {fileID: 8519716951242390196}
   m_Layer: 0
   m_Name: SoundEffectManager
   m_TagString: Untagged
@@ -146,3 +147,11 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!81 &8519716951242390196
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2819264753042293962}
+  m_Enabled: 1
