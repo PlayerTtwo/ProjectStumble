@@ -10,6 +10,12 @@ public class PlayerPowerup : MonoBehaviour
     public event Action<PowerupData> OnGainNewPowerup;
     public event Action OnUseCurrentPowerup;
 
+    public event Action OnPowerupStun;
+    public event Action OnPowerupSpeedBoost;
+    public event Action OnPowerupWetter;
+    public event Action OnPowerupShrink;
+    public event Action OnPowerupPush;
+
     [SerializeField] private PowerupData _powerUpData;
     private float _ySpawnOffset = 1.8f;
 
@@ -77,6 +83,7 @@ public class PlayerPowerup : MonoBehaviour
 
     private void ActivateStun()
     {
+        OnPowerupStun?.Invoke();
         //Get Component
         PlayerBallMovementController opponent = LevelManager.Instance.GetOpponent(_playerBallMovementController);
         //Set Values
@@ -90,6 +97,7 @@ public class PlayerPowerup : MonoBehaviour
 
     private void ActivateSpeedBoost()
     {
+        OnPowerupSpeedBoost?.Invoke();
         //Set Values
         _speedBoostTorque = 10f;
         //Delayed Set Value
@@ -99,6 +107,7 @@ public class PlayerPowerup : MonoBehaviour
 
     private void ActivateWetter()
     {
+        OnPowerupWetter?.Invoke();
         //Get Components
         PlayerBallMovementController opponent = LevelManager.Instance.GetOpponent(_playerBallMovementController);
         SphereCollider _ballSphereCollider = opponent.GetComponentInChildren<SphereCollider>();
@@ -111,6 +120,7 @@ public class PlayerPowerup : MonoBehaviour
 
     private void ActivateShrink()
     {
+        OnPowerupShrink?.Invoke();
         //Get Components
         PlayerBallMovementController opponent = LevelManager.Instance.GetOpponent(_playerBallMovementController);
         //Set Values
@@ -124,6 +134,7 @@ public class PlayerPowerup : MonoBehaviour
 
     private void ActivatePush()
     {
+        OnPowerupPush?.Invoke();
         //Get Component
         PlayerBallMovementController opponent = LevelManager.Instance.GetOpponent(_playerBallMovementController);
         //Set Values
