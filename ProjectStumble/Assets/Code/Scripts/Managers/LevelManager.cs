@@ -16,6 +16,12 @@ public class LevelManager : SceneSingleton<LevelManager>
 
     public int PlayersJoined { get => _playersJoined - 1; set => _playersJoined = value; }
 
+    public List<PlayerBallMovementController> Players
+    {
+        get => _players;
+        set => _players = value;
+    }
+
     public void OnJoinPlayer(PlayerBallMovementController player)
     {
         _playersJoined++;
