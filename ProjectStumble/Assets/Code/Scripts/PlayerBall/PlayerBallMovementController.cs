@@ -152,7 +152,7 @@ public class PlayerBallMovementController : MonoBehaviour
         else
         {
             Vector3 midAirMoveDirection = new Vector3(-_moveDirection.z, _moveDirection.y, _moveDirection.x);
-            _rigidBody.AddForce(midAirMoveDirection / 8f, ForceMode.VelocityChange);
+            _rigidBody.AddForce(midAirMoveDirection / 7f, ForceMode.VelocityChange);
         }
     }
 

@@ -910,6 +910,7 @@ GameObject:
   - component: {fileID: 3238407973196590264}
   - component: {fileID: 5478062658889429242}
   - component: {fileID: 9055699886415164720}
+  - component: {fileID: 133670630974362310}
   m_Layer: 5
   m_Name: LevelEndCanvas
   m_TagString: Untagged
@@ -1001,6 +1002,20 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &133670630974362310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3045922558646205112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18eff90c3d387df40afa8397bf9f3b69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameWin: {fileID: 3013913931331542880}
+  _gameLose: {fileID: 8065569390728228194}
 --- !u!1 &3116981022276961129
 GameObject:
   m_ObjectHideFlags: 0
@@ -1216,7 +1231,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Player 2
+  m_text: You win!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5f58c05479cb14f588efcdfcbdab347c, type: 2}
   m_sharedMaterial: {fileID: 7423409246693961632, guid: 5f58c05479cb14f588efcdfcbdab347c,
@@ -2462,7 +2477,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2395049113343804374}
   m_Layer: 0
-  m_Name: Play_Result_Defeat_Common
+  m_Name: LevelLost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2554,7 +2569,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Player 1
+  m_text: You Lose!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5f58c05479cb14f588efcdfcbdab347c, type: 2}
   m_sharedMaterial: {fileID: 7423409246693961632, guid: 5f58c05479cb14f588efcdfcbdab347c,

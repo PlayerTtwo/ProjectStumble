@@ -63,7 +63,7 @@ public class XToStart : MonoBehaviour
 
     IEnumerator Example()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(.5f);
         _Player1Anim.Play("CardAnimationDown");
         _Player2Anim.Play("CardAnimationUp");
     }
