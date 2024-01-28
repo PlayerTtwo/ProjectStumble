@@ -33,7 +33,7 @@ public class UIPlayerPowerup : MonoBehaviour
     private void PlayerPowerup_OnGainNewPowerup(PowerupData powerupData)
     {
         KillTween();
-    //    _powerupIconImage.sprite = powerupData.IconSprite;
+        _powerupIconImage.sprite = powerupData.IconSprite;
         _tween = _canvasGroup.DOFade(1f, .5f);
     }
 
