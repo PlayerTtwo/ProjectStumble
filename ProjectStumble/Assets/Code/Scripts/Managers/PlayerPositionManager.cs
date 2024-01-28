@@ -21,6 +21,7 @@ public class PlayerPositionManager : SceneSingleton<PlayerPositionManager>
         else if (_currPlayerIndex == 2)
         {
             player.transform.position = _player2Position.position;
+
         }
 
         StartCoroutine(ApplyExtrapolation(rigidbody));

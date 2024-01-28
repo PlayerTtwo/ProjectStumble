@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _iconSprite: {fileID: 21300000, guid: c4d04349af5e1a6408d0f96901c67969, type: 3}
   _powerUpType: 1
+  _useVfx: {fileID: 7372599683384654621, guid: a7f62f0c17a91ac4aaa2f5d1537cb5a0, type: 3}
