@@ -10,7 +10,7 @@ public class LevelManager : SceneSingleton<LevelManager>
 
     [SerializeField] private int _maxPlayersToJoin = 2;
 
-    private int _playersJoined;
+    public int _playersJoined;
 
     private List<PlayerBallMovementController> _players = new List<PlayerBallMovementController>();
 
