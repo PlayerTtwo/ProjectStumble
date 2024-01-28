@@ -1,4 +1,5 @@
 using DG.Tweening;
+using Lean.Pool;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ public class PlayerPowerup : MonoBehaviour
     public event Action OnUseCurrentPowerup;
 
     [SerializeField] private PowerupData _powerUpData;
+    private float _ySpawnOffset = 1.8f;
 
     private PlayerBallMovementController _playerBallMovementController;
     private BallPlayerInput _ballPlayerInput;
@@ -58,8 +60,16 @@ public class PlayerPowerup : MonoBehaviour
                 break;
         }
 
+        SpawnCollectVfx();
         OnUseCurrentPowerup?.Invoke();
         _powerUpData = null;
+    }
+
+    private void SpawnCollectVfx()
+    {
+        Vector3 spawnPosition = transform.position;
+        spawnPosition.y += _ySpawnOffset;
+        LeanPool.Spawn(_powerUpData.UseVfx, spawnPosition, _powerUpData.UseVfx.transform.rotation);
     }
 
     private void ActivateStun()
