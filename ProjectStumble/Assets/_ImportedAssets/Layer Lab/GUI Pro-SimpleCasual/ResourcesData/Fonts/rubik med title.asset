@@ -58,11 +58,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
-  m_Name: Rubik-Medium SDF
+  m_Name: rubik med title
   m_EditorClassIdentifier: 
-  hashCode: -1034929210
+  hashCode: 1035496043
   material: {fileID: 7423409246693961632}
-  materialHashCode: -573790682
+  materialHashCode: -2023026965
   m_Version: 1.1.0
   m_SourceFontFileGUID: de103b4fa240e436881894b6f0fc6c42
   m_SourceFontFile_EditorRef: {fileID: 0}
@@ -5627,7 +5627,7 @@ Material:
     - _OutlineSoftness: 0
     - _OutlineUVSpeedX: 0
     - _OutlineUVSpeedY: 0
-    - _OutlineWidth: 0
+    - _OutlineWidth: 0.119
     - _PerspectiveFilter: 0.875
     - _Reflectivity: 10
     - _ScaleRatioA: 0.8333333

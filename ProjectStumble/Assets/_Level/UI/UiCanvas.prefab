@@ -2575,7 +2575,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 42.006493, y: -74.274994}
-  m_SizeDelta: {x: 359.636, y: 50}
+  m_SizeDelta: {x: 424.0028, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6938571228220247392
 CanvasRenderer:
@@ -2605,10 +2605,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Ultraball <size=120%>Z
+  m_text: Dragging ball <size=120%>Z
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5f58c05479cb14f588efcdfcbdab347c, type: 2}
-  m_sharedMaterial: {fileID: 7423409246693961632, guid: 5f58c05479cb14f588efcdfcbdab347c,
+  m_fontAsset: {fileID: 11400000, guid: a968935eb9d17ba4cb1ae8a53ad4815d, type: 2}
+  m_sharedMaterial: {fileID: 7423409246693961632, guid: a968935eb9d17ba4cb1ae8a53ad4815d,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
